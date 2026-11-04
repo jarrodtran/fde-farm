@@ -7,7 +7,7 @@
     "dev": "pnpm run dev",
     "build": "pnpm run build",
     "start": "pnpm start",
-    "test": "pnpm test",
+    "test": "vitest run",
     "db:push": "pnpm run db:push"
   },
   "keywords": [
