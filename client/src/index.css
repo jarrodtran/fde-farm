@@ -15,3 +15,31 @@ body {
 #root {
   min-height: 100vh;
 }
+
+/* Design system — one muted steel-blue accent (#3d5a80). No helper text; the
+  button is the only primary action and sits at the top of the main area. */
+.displays {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.primary {
+  background-color: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary:hover {
+  background-color: #456590;
+}
+
+.primary:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}

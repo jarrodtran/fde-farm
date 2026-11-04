@@ -1,20 +1,28 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { trpc } from "./trpc";
 
-const App: React.FC = () => {
+export default function App() {
+  const [hello, setHello] = useState<{ text: string } | null>(null);
+  useEffect(() => {
+    trpc.hello.query().then((data) => setHello(data));
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
-      <header className="text-center mb-12">
-        <h1 className="text-3xl font-bold text-gray-800">Claude Application</h1>
-        <p className="text-gray-600">Full-stack React + Express with tRPC</p>
+    <div className="min-h-screen bg-white px-6">
+      <header className="mx-auto max-w-xl text-center">
+        <h1 className="displays text-2xl">FDE Farm</h1>
+        {hello ? <p className="mt-2 text-gray-600">{hello.text}</p> : null}
       </header>
-      <main className="max-w-4xl mx-auto">
-        <p className="text-gray-700">
-          This is the client-side React application built with Vite and Tailwind CSS.
-          It connects to the backend API via tRPC.
-        </p>
+      <main className="mx-auto max-w-xl">
+        <button
+          type="button"
+          className="primary"
+          data-testid="primary-action"
+          onClick={() => {}}
+        >
+          New task
+        </button>
       </main>
     </div>
   );
-};
-
-export default App;
+}

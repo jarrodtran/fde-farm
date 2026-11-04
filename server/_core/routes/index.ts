@@ -1,11 +1,11 @@
-import { tRPC } from "trpc";
-import { setupRouter } from "./index";
+import { initTRPC } from "@trpc/server";
+import type { Context } from "../context";
 
-export const router = tRPC.setup({
-  middleware: [
-    // Add authentication middleware here
-  ],
-  // Define types and functions
+const t = initTRPC.context<Context>().create();
+
+export const router = t.router({
+  // Minimal demonstration query. Add real procedures in later PRs.
+  hello: t.procedure.query(() => ({ text: "world" })),
 });
 
-export default router;
+export type AppRouter = typeof router;

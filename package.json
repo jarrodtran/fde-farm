@@ -2,23 +2,17 @@
   "name": "claude-application",
   "version": "1.0.0",
   "description": "Full-stack application with React frontend and Express backend",
-  "main": "index.js",
+  "private": true,
+  "main": "server/_core/index.js",
   "scripts": {
-    "dev": "pnpm run dev",
-    "build": "pnpm run build",
-    "start": "pnpm start",
+    "dev": "vite --host",
+    "build": "pnpm build:client && pnpm build:server",
+    "build:client": "vite build",
+    "build:server": "esbuild server/_core/index.ts --bundle --platform=node --outdir=dist",
+    "start": "node dist/server.js",
     "test": "vitest run",
-    "db:push": "pnpm run db:push"
+    "db:push": "drizzle-kit push"
   },
-  "keywords": [
-    "react",
-    "express",
-    "trpc",
-    "drizzle",
-    "mysql"
-  ],
-  "author": "User",
-  "license": "MIT",
   "dependencies": {
     "drizzle-kit": "^0.20.0",
     "drizzle-orm": "^0.28.0",
@@ -32,12 +26,12 @@
     "vite": "^5.0.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "eslint": "^8.0.0",
-    "postcss": "^8.4.0",
-    "tailwind-merge": "^2.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "esbuild": "^0.20.0",
     "typescript": "^5.0.0"
   }
 }
